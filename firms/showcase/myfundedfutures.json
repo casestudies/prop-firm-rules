@@ -1,0 +1,341 @@
+{
+  "firm": "MyFundedFutures",
+  "slug": "myfundedfutures",
+  "accountSizes": [
+    25000,
+    50000
+  ],
+  "lastChecked": "2026-07-22",
+  "lastIndependentRecheck": "2026-07-22",
+  "sizes": {
+    "25000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "MyFundedFutures",
+      "firm_slug": "myfundedfutures",
+      "product": "Builder",
+      "account_size": 25000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Builder Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 1500,
+          "min_trading_days": 1,
+          "max_days": null,
+          "max_contracts": "2 mini / 20 micro",
+          "daily_loss": {
+            "amount_pct": 0,
+            "amount_basis": "initial",
+            "amount_abs": 0,
+            "on_breach": null,
+            "includes_unrealized": null,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_eod",
+            "amount_pct": 4,
+            "amount_abs": 1000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 100
+            },
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.evaluation_frequency",
+          "candidates": [
+            "intraday",
+            "eod"
+          ],
+          "conservative": "intraday",
+          "inert": false,
+          "basis": "E2(a)/E3: the MLL trails the EOD close (basis stays balance_eod), but the firm never states whether an intraday dip below the floor breaches immediately or only the EOD close is tested. 'Open equity losses are counted ... AT THE END OF THE TRADING DAY' supports EOD; Topstep-style real-time monitoring supports intraday. Intraday breaches day 12; EOD day 20 on the fixed path. Conservative headline = intraday. INEXPRESSIBLE before evaluation_frequency was split from includes_unrealized.",
+          "sources": [
+            "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Profit Target $1,500",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Minimum Trading Days: 1 Day",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Daily Loss Limit: None",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Max Loss (MLL) $1,000, EOD Trailing",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "EOD Trailing ... never moves down",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "trails ... new end-of-day highs",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "locks ... $100 above the starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Consistency (Evaluation): None",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "ambiguous",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].consistency": "confirmed",
+            "phases[0].min_trading_days": "confirmed"
+          },
+          "sources": [
+            "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+            "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide"
+          ],
+          "note": "Builder plan, both blind passes (pass A from the prior run, pass B this run) agree: target $1,500(25k)/$3,000(50k), max drawdown $1,000/$2,000, min 1 day, EOD trailing, consistency correctly NONE in evaluation (the 50% is a payout-cycle gate). The size difference is real and non-interpolable: 25k has NO daily loss limit, 50k has a $1,000 soft-pause DLL - our corpus already encodes exactly this. UNVERIFIABLE (preserved): the drawdown lock threshold - our value is initial+$100; the firm publishes \"static once MLL reaches $0\" for the live stage only and leaves the evaluation-stage lock unstated; whether the DLL counts unrealized and its reset time are absent. Corpus unchanged."
+        }
+      ]
+    },
+    "50000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "MyFundedFutures",
+      "firm_slug": "myfundedfutures",
+      "product": "Builder",
+      "account_size": 50000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Builder Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 3000,
+          "min_trading_days": 1,
+          "max_days": null,
+          "max_contracts": "4 mini / 40 micro",
+          "daily_loss": {
+            "amount_pct": 2,
+            "amount_basis": "initial",
+            "amount_abs": 1000,
+            "on_breach": "lockout",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_eod",
+            "amount_pct": 4,
+            "amount_abs": 2000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 100
+            },
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": 153,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.amount_abs",
+          "candidates": [
+            2000,
+            1500
+          ],
+          "conservative": 1500,
+          "basis": "Builder 50K sells two options: Default $2,000 MLL and Add-On $1,500 MLL (\"The only structural difference is the Maximum Loss Limit\"). Headline = $2,000 (Default). Conservative = $1,500 (tighter = higher ruin).",
+          "sources": [
+            "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide"
+          ],
+          "inert": true,
+          "inert_reason": "E3 2026-07-17: both variants ($2,000 and $1,500 MLL) lock at the same level (initial+100=50,100) and converge by day 7. The amount only sets how fast the floor climbs to the lock, not where it stops. Inert on any path that survives to the lock."
+        },
+        {
+          "field": "phases[0].max_drawdown.evaluation_frequency",
+          "candidates": [
+            "intraday",
+            "eod"
+          ],
+          "conservative": "intraday",
+          "inert": false,
+          "basis": "E2(a)/E3: the MLL trails the EOD close (basis stays balance_eod), but the firm never states whether an intraday dip below the floor breaches immediately or only the EOD close is tested. 'Open equity losses are counted ... AT THE END OF THE TRADING DAY' supports EOD; Topstep-style real-time monitoring supports intraday. Intraday breaches day 12; EOD day 20 on the fixed path. Conservative headline = intraday. INEXPRESSIBLE before evaluation_frequency was split from includes_unrealized.",
+          "sources": [
+            "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Profit Target $3,000",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Minimum Trading Days: 1 Day",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "$1,000 soft pause DLL",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "$1,000 soft pause",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Max EOD Drawdown (MLL) $2,000 ... floor $48,000",
+          "confidence": "reconciled"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "End of Day (EOD) trailing drawdown",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "End of Day (EOD) trailing drawdown",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "locks permanently once it reaches $100 above the starting balance",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. The firm example does not discriminate this field (blind under reconciliation-discriminates.test.js): mutating it to any legal value still reconciles. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Open equity losses are counted ... at the end of the trading day",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "quote": "Consistency Rule (Evaluation): None",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "ambiguous",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].consistency": "confirmed",
+            "phases[0].min_trading_days": "confirmed"
+          },
+          "sources": [
+            "https://help.myfundedfutures.com/en/articles/15862870-builder-plan-25k-a-comprehensive-guide",
+            "https://help.myfundedfutures.com/en/articles/14290805-builder-plan-50k-a-comprehensive-guide"
+          ],
+          "note": "Builder plan, both blind passes (pass A from the prior run, pass B this run) agree: target $1,500(25k)/$3,000(50k), max drawdown $1,000/$2,000, min 1 day, EOD trailing, consistency correctly NONE in evaluation (the 50% is a payout-cycle gate). The size difference is real and non-interpolable: 25k has NO daily loss limit, 50k has a $1,000 soft-pause DLL - our corpus already encodes exactly this. UNVERIFIABLE (preserved): the drawdown lock threshold - our value is initial+$100; the firm publishes \"static once MLL reaches $0\" for the live stage only and leaves the evaluation-stage lock unstated; whether the DLL counts unrealized and its reset time are absent. Corpus unchanged."
+        }
+      ]
+    }
+  }
+}

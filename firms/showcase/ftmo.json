@@ -1,0 +1,708 @@
+{
+  "firm": "FTMO",
+  "slug": "ftmo",
+  "accountSizes": [
+    50000,
+    100000,
+    200000
+  ],
+  "lastChecked": "2026-07-31",
+  "lastIndependentRecheck": "2026-07-31",
+  "sizes": {
+    "50000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "FTMO",
+      "firm_slug": "ftmo",
+      "product": "FTMO Challenge (2-Step)",
+      "account_size": 50000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 2,
+      "phases": [
+        {
+          "name": "FTMO Challenge",
+          "profit_target_pct": 10,
+          "profit_target_abs": 5000,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 2500,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 5000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        },
+        {
+          "name": "Verification",
+          "profit_target_pct": 5,
+          "profit_target_abs": 2500,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 2500,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 5000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time_refundable",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": true,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "23:00",
+            "22:00"
+          ],
+          "conservative": "23:00",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. FTMO publishes ONE rule for both products (\"recalculated daily at 00:00 CE(S)T\"), but this corpus held two different UTC values (ftmo=23:00, ftmo-1step=22:00) for the identical source sentence - the CET(winter,UTC+1)/CEST(summer,UTC+2) DST split, not two different firm rules. Unified both products to the same ambiguities[] set, matching the convention Topsteps own reset_time_utc ambiguity already uses for the identical CDT/CST issue. Conservative = 23:00 (CET reading), matching both the already-held ftmo.json value and Topsteps precedent.",
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 1 (FTMO Challenge): \"10%\"",
+          "confidence": "sourced"
+        },
+        "phases[1].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 2 (Verification): \"5%\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "requires ... at least 4 Trading Days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no time limit ... Trading Period is unlimited",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Daily Loss ... 5% of the Initial",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-daily-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "$204,000 - $10,000 = $194,000",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity also includes floating profits and losses",
+          "confidence": "derived"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "breaching the Maximum Daily Loss fails the challenge",
+          "confidence": "derived"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Loss ... 10% of the initial",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "fixed limit of Initial ... minus the loss amount",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity ... must not drop below 90% ... at any given time",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "floating loss of $2,001, the limit would be exceeded",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no consistency objective is listed",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "documented_omissions": [
+        {
+          "field": "phases[0].consistency",
+          "inert_for_ruin": true,
+          "source_url": "https://ftmo.com/en/how-it-works/",
+          "note": "E3 2026-07-17: the rule file records consistency:[] but FTMO publishes a Best Day rule (a single day may not exceed 50% of total profit on some account types). Recorded as an omission, NOT modeled as a breach: FTMO states it gates the first payout, not the evaluation pass, so it is inert for ruin. Flagged for provenance completeness."
+        }
+      ],
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].consistency": "confirmed",
+            "phases[0].daily_loss.reset_time_utc": "mismatch"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/",
+            "https://ftmo.com/en/comparison-table/",
+            "https://ftmo.com/en/2-step-challenge/"
+          ],
+          "note": "CONFIRMED by both blind passes, every material field: 10% phase-1 / 5% phase-2, min 4 trading days, NO time limit (the old 30/60-day caps are retired), daily loss 5% measured on equity including floating P/L, max loss 10% STATIC anchored to initial capital, no consistency rule on the 2-step. MISMATCH (NOT entered): daily_loss.reset_time_utc. FTMO publishes ONE rule for both products - \"recalculated daily at 00:00 CE(S)T\" - but our corpus stores 23:00 here and 22:00 on ftmo-1step. Same published rule frozen to two different UTC values; CET/CEST makes this a DST ambiguity that should be an ambiguities[] set, not two contradictory facts."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].daily_loss.reset_time_utc": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        }
+      ]
+    },
+    "100000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "FTMO",
+      "firm_slug": "ftmo",
+      "product": "FTMO Challenge (2-Step)",
+      "account_size": 100000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 2,
+      "phases": [
+        {
+          "name": "FTMO Challenge",
+          "profit_target_pct": 10,
+          "profit_target_abs": 10000,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 5000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 10000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        },
+        {
+          "name": "Verification",
+          "profit_target_pct": 5,
+          "profit_target_abs": 5000,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 5000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 10000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time_refundable",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": true,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "23:00",
+            "22:00"
+          ],
+          "conservative": "23:00",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. FTMO publishes ONE rule for both products (\"recalculated daily at 00:00 CE(S)T\"), but this corpus held two different UTC values (ftmo=23:00, ftmo-1step=22:00) for the identical source sentence - the CET(winter,UTC+1)/CEST(summer,UTC+2) DST split, not two different firm rules. Unified both products to the same ambiguities[] set, matching the convention Topsteps own reset_time_utc ambiguity already uses for the identical CDT/CST issue. Conservative = 23:00 (CET reading), matching both the already-held ftmo.json value and Topsteps precedent.",
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 1 (FTMO Challenge): \"10%\"",
+          "confidence": "sourced"
+        },
+        "phases[1].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 2 (Verification): \"5%\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "requires ... at least 4 Trading Days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no time limit ... Trading Period is unlimited",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Daily Loss ... 5% of the Initial",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-daily-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "$204,000 - $10,000 = $194,000",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity also includes floating profits and losses",
+          "confidence": "derived"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "breaching the Maximum Daily Loss fails the challenge",
+          "confidence": "derived"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Loss ... 10% of the initial",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "fixed limit of Initial ... minus the loss amount",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity ... must not drop below 90% ... at any given time",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "floating loss of $2,001, the limit would be exceeded",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no consistency objective is listed",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "documented_omissions": [
+        {
+          "field": "phases[0].consistency",
+          "inert_for_ruin": true,
+          "source_url": "https://ftmo.com/en/how-it-works/",
+          "note": "E3 2026-07-17: the rule file records consistency:[] but FTMO publishes a Best Day rule (a single day may not exceed 50% of total profit on some account types). Recorded as an omission, NOT modeled as a breach: FTMO states it gates the first payout, not the evaluation pass, so it is inert for ruin. Flagged for provenance completeness."
+        }
+      ],
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].consistency": "confirmed",
+            "phases[0].daily_loss.reset_time_utc": "mismatch"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/",
+            "https://ftmo.com/en/comparison-table/",
+            "https://ftmo.com/en/2-step-challenge/"
+          ],
+          "note": "CONFIRMED by both blind passes, every material field: 10% phase-1 / 5% phase-2, min 4 trading days, NO time limit (the old 30/60-day caps are retired), daily loss 5% measured on equity including floating P/L, max loss 10% STATIC anchored to initial capital, no consistency rule on the 2-step. MISMATCH (NOT entered): daily_loss.reset_time_utc. FTMO publishes ONE rule for both products - \"recalculated daily at 00:00 CE(S)T\" - but our corpus stores 23:00 here and 22:00 on ftmo-1step. Same published rule frozen to two different UTC values; CET/CEST makes this a DST ambiguity that should be an ambiguities[] set, not two contradictory facts."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].daily_loss.reset_time_utc": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        }
+      ]
+    },
+    "200000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "FTMO",
+      "firm_slug": "ftmo",
+      "product": "FTMO Challenge (2-Step)",
+      "account_size": 200000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 2,
+      "phases": [
+        {
+          "name": "FTMO Challenge",
+          "profit_target_pct": 10,
+          "profit_target_abs": 20000,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 10000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 20000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        },
+        {
+          "name": "Verification",
+          "profit_target_pct": 5,
+          "profit_target_abs": 10000,
+          "min_trading_days": 4,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 5,
+            "amount_basis": "initial",
+            "amount_abs": 10000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00"
+          },
+          "max_drawdown": {
+            "type": "static",
+            "basis": "equity_intraday",
+            "amount_pct": 10,
+            "amount_abs": 20000,
+            "anchor": "initial_balance",
+            "includes_unrealized": true,
+            "locks": null
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time_refundable",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": true,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "23:00",
+            "22:00"
+          ],
+          "conservative": "23:00",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. FTMO publishes ONE rule for both products (\"recalculated daily at 00:00 CE(S)T\"), but this corpus held two different UTC values (ftmo=23:00, ftmo-1step=22:00) for the identical source sentence - the CET(winter,UTC+1)/CEST(summer,UTC+2) DST split, not two different firm rules. Unified both products to the same ambiguities[] set, matching the convention Topsteps own reset_time_utc ambiguity already uses for the identical CDT/CST issue. Conservative = 23:00 (CET reading), matching both the already-held ftmo.json value and Topsteps precedent.",
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 1 (FTMO Challenge): \"10%\"",
+          "confidence": "sourced"
+        },
+        "phases[1].profit_target_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Phase 2 (Verification): \"5%\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "requires ... at least 4 Trading Days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no time limit ... Trading Period is unlimited",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Daily Loss ... 5% of the Initial",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-daily-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "$204,000 - $10,000 = $194,000",
+          "confidence": "reconciled"
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity also includes floating profits and losses",
+          "confidence": "derived"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "breaching the Maximum Daily Loss fails the challenge",
+          "confidence": "derived"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "Maximum Loss ... 10% of the initial",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "fixed limit of Initial ... minus the loss amount",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "equity ... must not drop below 90% ... at any given time",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. The firm example does not discriminate this field (blind under reconciliation-discriminates.test.js): mutating it to any legal value still reconciles. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "quote": "floating loss of $2,001, the limit would be exceeded",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. The firm example does not discriminate this field (blind under reconciliation-discriminates.test.js): mutating it to any legal value still reconciles. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://ftmo.com/en/trading-objectives/",
+          "retrieved_at": "2026-07-16",
+          "quote": "no consistency objective is listed",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://academy.ftmo.com/lesson/maximum-loss/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "documented_omissions": [
+        {
+          "field": "phases[0].consistency",
+          "inert_for_ruin": true,
+          "source_url": "https://ftmo.com/en/how-it-works/",
+          "note": "E3 2026-07-17: the rule file records consistency:[] but FTMO publishes a Best Day rule (a single day may not exceed 50% of total profit on some account types). Recorded as an omission, NOT modeled as a breach: FTMO states it gates the first payout, not the evaluation pass, so it is inert for ruin. Flagged for provenance completeness."
+        }
+      ],
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].consistency": "confirmed",
+            "phases[0].daily_loss.reset_time_utc": "mismatch"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/",
+            "https://ftmo.com/en/comparison-table/",
+            "https://ftmo.com/en/2-step-challenge/"
+          ],
+          "note": "CONFIRMED by both blind passes, every material field: 10% phase-1 / 5% phase-2, min 4 trading days, NO time limit (the old 30/60-day caps are retired), daily loss 5% measured on equity including floating P/L, max loss 10% STATIC anchored to initial capital, no consistency rule on the 2-step. MISMATCH (NOT entered): daily_loss.reset_time_utc. FTMO publishes ONE rule for both products - \"recalculated daily at 00:00 CE(S)T\" - but our corpus stores 23:00 here and 22:00 on ftmo-1step. Same published rule frozen to two different UTC values; CET/CEST makes this a DST ambiguity that should be an ambiguities[] set, not two contradictory facts."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].daily_loss.reset_time_utc": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://ftmo.com/en/trading-objectives/"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        }
+      ]
+    }
+  }
+}

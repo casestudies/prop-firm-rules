@@ -1,0 +1,1648 @@
+{
+  "firm": "E8 Markets",
+  "slug": "e8-markets",
+  "accountSizes": [
+    5000,
+    10000,
+    25000,
+    50000,
+    100000,
+    200000,
+    400000,
+    500000
+  ],
+  "lastChecked": "2026-07-30",
+  "lastIndependentRecheck": "2026-07-30",
+  "sizes": {
+    "5000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 5000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 450,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 200,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 300,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 450 ($5K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 200 ($5K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 200 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 300 ($5K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 300\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $5K size: profit target 450 (9%), Daily Drawdown 200 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 300 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "10000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 10000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 900,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 400,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 600,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 900 ($10K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 400 ($10K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 400 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 600 ($10K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 600\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $10K size: profit target 900 (9%), Daily Drawdown 400 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 600 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "25000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 25000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 2250,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 1000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 1500,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 2250 ($25K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 1000 ($25K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 1000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 1500 ($25K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 1500\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $25K size: profit target 2250 (9%), Daily Drawdown 1000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 1500 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "50000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 50000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 4500,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 2000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 3000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 4500 ($50K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 2000 ($50K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 2000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 3000 ($50K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 3000\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $50K size: profit target 4500 (9%), Daily Drawdown 2000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 3000 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "100000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 100000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 9000,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 4000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 6000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "pricing.initial_fee",
+          "candidates": [
+            366,
+            398
+          ],
+          "conservative": 398,
+          "basis": "Two first-party pages give two different headline one-time prices for what the task brief confirms is the SAME $100K/80%-split product (product code a=1S): the dedicated /e8-one page's own requirements-table price list shows $366 (with a $488 struck-through/list figure alongside it), while the homepage's \"Most popular challenge\" promo tile for the same size/split (differing only in a lower dr=4 slider position, not a different product) advertises \"for just $398\" at a displayed $299/$398. A real price difference tied to the drawdown-slider choice (4% vs this file's modeled 6% default) is plausible, but neither reader found a first-party sentence actually tying the delta to that choice, so it is left unresolved rather than inferred. Conservative pick = $398 (the higher of the two headline figures a trader might actually be charged, so this file never understates cost); pricing.initial_fee itself is still left null in the schema (as for every other size in this corpus) so the ladder stays consistently unpriced rather than half-priced off an unresolved pair.",
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 9000 ($100K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 4000 ($100K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 4000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 6000 ($100K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 6000\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed",
+            "pricing.initial_fee": "disagree"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $100K size: profit target 9000 (9%), Daily Drawdown 4000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 6000 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. (b) a genuine two-page $100K pricing conflict ($366 on /e8-one vs. \"just $398\" on the homepage promo tile for the same product code, plausibly but not confirmedly explained by the promo tile's different dr=4 slider position). STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "200000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 200000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 18000,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 8000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 12000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 18000 ($200K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 8000 ($200K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 8000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 12000 ($200K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 12000\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $200K size: profit target 18000 (9%), Daily Drawdown 8000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 12000 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "400000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 400000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 36000,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 16000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 24000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 36000 ($400K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 16000 ($400K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 16000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 24000 ($400K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 24000\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $400K size: profit target 36000 (9%), Daily Drawdown 16000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 24000 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    },
+    "500000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "E8 Markets",
+      "firm_slug": "e8-markets",
+      "product": "E8 One (customizable 4-14% Dynamic Drawdown / 80-90-100% payout split; this file = the /e8-one page's own default config, 6% drawdown / 80% split)",
+      "account_size": 500000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-30",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "E8 One",
+          "profit_target_pct": 9,
+          "profit_target_abs": 45000,
+          "min_trading_days": 0,
+          "max_days": null,
+          "daily_loss": {
+            "amount_pct": 4,
+            "amount_basis": "initial",
+            "amount_abs": 20000,
+            "on_breach": "fail",
+            "includes_unrealized": true,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_closed_trade",
+            "amount_pct": 6,
+            "amount_abs": 30000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": 80
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Neither first-party reader found a sentence stating whether floating (open, unrealized) intraday loss can trip the Dynamic Drawdown floor, or whether only the CLOSED balance is tested against it. The worked example (help.e8markets.com/.../11782996-dynamic-drawdown) is entirely a sequence of CLOSED-trade outcomes and never shows an open position dipping below the floor mid-trade, so it cannot discriminate the two readings. Conservative pick = true (unrealized/intraday equity counts toward the breach test), matching this corpus's rule of never overstating ease of passing / understating ruin.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.includes_unrealized",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": true,
+          "basis": "Same gap as the Dynamic Drawdown field above, applied to the Daily Drawdown floor: neither reader found a sentence stating whether floating/unrealized intraday loss (vs. only the closed balance) can trip the daily \"Loss level\". The Daily Drawdown help article's own 3-day worked example only ever shows day-boundary closed balances, never an intraday excursion below the floor mid-day. Conservative pick = true (floating loss counts toward the breach test), same reasoning as the Dynamic Drawdown field: never overstate ease of passing.",
+          "sources": [
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://e8markets.com/e8-one"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Profit Target 45000 ($500K account row, E8 One requirements table; also shown on the account-config card at Drawdown \"6% Max\", Payout \"80%\", Drawdown type \"Dynamic\")",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "E8 One requirements table shows no minimum-trading-days requirement for this size",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Daily Drawdown 20000 ($500K account row, E8 One requirements table); general mechanic on the same page: \"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" (66% of the 6% default rounds to the page's own 20000 figures — the dollar figures, not the rounded \"66%\" prose, are what this file encodes)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Daily drawdown Calculated at 66% of your drawdown. Hard breach.\" — a Daily Drawdown breach fails the account outright (not a soft/lockout-for-the-day breach)",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Starting balance of the new day - Fixed amount (Daily Drawdown) = Loss level\" / \"The fixed $ amount ... remains constant based on your initial balance; only the starting balance of the day changes the actual Loss Level.\" — the DOLLAR AMOUNT is fixed off the initial balance; the FLOOR itself is re-anchored each day to that day's starting balance",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "Max Drawdown 30000 ($500K account row, E8 One requirements table; also shown on the account-config card as \"Max drawdown 30000\" at Drawdown \"6% Max\")",
+          "confidence": "sourced",
+          "reasoning": "Reader A explicitly restated this as a percentage (6%, matching every published $/size pair exactly: 300/5000, 600/10000, 1500/25000, 3000/50000, 6000/100000, 12000/200000, 24000/400000, 30000/500000). Reader B's independent read supplied only the $ figures, not a separate percentage statement — that is coverage, not a conflict, so this is NOT logged as an ambiguities[] entry."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance. In simple terms, it increases as you increase the balance by closing profits.\" / \"Traditional Trailing Drawdown moves with the trader's equity; however, our Dynamic Drawdown loss level will only increase when you are closing profits.\" — trails upward on CLOSED profit only, never on unrealized/floating profit, and never falls on a loss",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Highest Closed Balance - Drawdown amount (6%) = Loss level\" — the ratchet reference is the highest CLOSED-trade balance, not intraday/floating equity",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Dynamic Drawdown refers to the calculation based on the last Highest Closed Balance\" — engine-schema value is highest_water_mark (the non-initial-balance trailing anchor); the closed-trade-only ratchet basis itself is separately encoded in max_drawdown.basis",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "quote": "Worked example ($100K account): \"You close +$7k profit (Loss level raises by 4k and locks forever at the initial balance level) → Balance $107,000 / Loss Level $100,000\" — the floor stops ratcheting once it would reach the account's own initial balance and never rises past it",
+          "confidence": "sourced"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.e8markets.com/en/articles/11775980-e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"There is no consistency rule in the challenge phase, but in the performance stage, there is a 40% best day rule.\" / \"No single day may exceed 40% of total profits.\"",
+          "confidence": "sourced",
+          "reasoning": "Both readers agree: the 40% best-day rule is a SimFi(TM) Performance (funded/payout) stage gate, not a rule of the E8 One evaluation this phase models (steps:1 = the challenge only). Left as consistency:[] here rather than inventing a non-corpus enforced_at value (e.g. \"funded\"/\"payout\") that no engine consumer reads; the 40% figure is preserved here and in rechecks[].note as a fact about the separate funded stage this file does not simulate."
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+          "retrieved_at": "2026-07-30",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) convention (see Tradeify/Phidias-E2L): closed-trade/eod basis => tested at close, not continuously. basis=balance_closed_trade => evaluation_frequency=eod."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://e8markets.com/e8-one",
+          "retrieved_at": "2026-07-30",
+          "quote": "\"Select 80%, 90%, or 100% at checkout. Higher splits cost more upfront — the choice is permanent and locked in for the life of your performance account.\" 80% is the page's own default/lowest-cost split, matching the 6%-drawdown default this file models throughout — a trader who pays for 90% or 100% at checkout changes this number, it is not a firm constant.",
+          "confidence": "sourced",
+          "reasoning": "Reader A quoted this figure directly; reader B's independent pass recorded it as null (not covered), not as a conflicting number — coverage, not conflict, same treatment as max_drawdown.amount_pct above."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-30",
+          "by": "corpus-add-firms-workflow",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].daily_loss.amount_basis": "confirmed",
+            "phases[0].daily_loss.on_breach": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "unverifiable",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.anchor": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].max_drawdown.includes_unrealized": "unverifiable",
+            "phases[0].consistency": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://e8markets.com/e8-one",
+            "https://e8markets.com/",
+            "https://help.e8markets.com/en/articles/11782996-dynamic-drawdown",
+            "https://help.e8markets.com/en/articles/11769446-daily-drawdown",
+            "https://help.e8markets.com/en/articles/11775980-e8-one",
+            "https://help.e8markets.com/en/articles/9448349-what-is-the-payout-on-demand"
+          ],
+          "note": "Both blind passes agree on the E8 One (page-default 6% Dynamic Drawdown / 80% split) numbers for the $500K size: profit target 45000 (9%), Daily Drawdown 20000 (4% of initial, fixed-$ floor re-anchored to each day's starting balance, hard breach), Dynamic Drawdown 30000 (6%, trailing off the highest CLOSED-trade balance only, never falling, locking forever once it would reach the account's own initial balance), 0 minimum trading days, and NO consistency rule at the evaluation/challenge stage (the 40% best-day rule both passes cite applies only at the separate SimFi(TM) Performance/funded stage, which this phase does not model). Reader B reported only $ amounts for the drawdown ladder, not a separate percentage, and recorded the 80% profit split as null/uncovered rather than a conflicting number; reader A's explicit 6% drawdown and 80% split are arithmetically exact / directly quoted, so both are coverage gaps, not conflicts, and are not promoted to ambiguities[] (see the max_drawdown.amount_pct and payout.profit_split_pct provenance notes). The $100,000-size worked example at help.e8markets.com/.../11782996-dynamic-drawdown reproduces exactly against this file's mechanic (see golden vector). Remaining disagreement surface across both passes was almost entirely citation wording/URL choice (card vs. requirements-table vs. help-center phrasing for the same number) — not a data conflict — and is not promoted to ambiguities[]. UNRESOLVED (logged as ambiguities[], not silently picked): (a) whether floating/intraday equity (vs. only the closed balance) can trip the Dynamic Drawdown floor, and the same open question for the Daily Drawdown floor — no first-party sentence found either way for either mechanic. STRUCTURAL: E8 One is a single point on the firm's own customizable 4-14% drawdown / 80-90-100% payout-split slider (profit target = 1.5x chosen drawdown, daily loss ~= 66% of chosen drawdown, per the firm's own stated formula) — every figure in this file, including the 80% profit split, is the page's own DEFAULT config, not a firm-wide constant; a different slider choice re-derives every $ figure in this file. E8 Pro / E8 Signature / E8 Zero are separate lower-or-no-consistency-rule products whose dedicated marketing pages would not render past site-wide footer boilerplate through the retrieval proxy across multiple fetch strategies this run and could not be first-party sourced."
+        }
+      ]
+    }
+  }
+}

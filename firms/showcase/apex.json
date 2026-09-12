@@ -1,0 +1,755 @@
+{
+  "firm": "Apex Trader Funding",
+  "slug": "apex",
+  "accountSizes": [
+    25000,
+    50000,
+    100000,
+    150000
+  ],
+  "lastChecked": "2026-07-22",
+  "lastIndependentRecheck": "2026-07-22",
+  "sizes": {
+    "25000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Apex Trader Funding",
+      "firm_slug": "apex",
+      "product": "Intraday Trailing Drawdown Evaluation (EA)",
+      "account_size": 25000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "access_note": "Sourced via r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible). Real page content, corroborated across two mirror URLs; not a direct first-party fetch. Operator trust decision pending.",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Intraday Trailing Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 1500,
+          "min_trading_days": 0,
+          "max_days": 30,
+          "max_contracts": 4,
+          "daily_loss": {
+            "amount_pct": 0,
+            "amount_basis": "initial",
+            "amount_abs": 0,
+            "includes_unrealized": null,
+            "on_breach": null,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "equity_intraday",
+            "amount_pct": 4,
+            "amount_abs": 1000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": null
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.locks",
+          "candidates": [
+            "tradovate_never_locks",
+            "rithmic_wealthcharts_locks_at_profit_target"
+          ],
+          "conservative": "tradovate_never_locks",
+          "basis": "During the EVALUATION the intraday threshold trails the peak the whole way with no lock on Tradovate; some Apex pages state Rithmic/Wealthcharts evaluations freeze at the profit-target balance (50K: $53,000). The Starting-Balance+$100 freeze (50K: $50,100) is a FUNDED (Performance Account) feature, NOT the evaluation. Conservative headline = never-lock (highest ruin). Platform choice, not doc uncertainty.",
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+          ],
+          "inert": true,
+          "inert_reason": "E3 2026-07-17: the lock-vs-never-lock reading is UNOBSERVABLE inside an evaluation. The lock engages only when the peak reaches the profit-target balance (50K: $53,000 = +$3,000), but the evaluation ENDS at that same target. No in-evaluation path can distinguish the readings."
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "25K $1,500 / 50K $3,000 / 100K $6,000 / 150K $9,000",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "No minimum trading days required, may pass in one",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "30 Days access period",
+          "confidence": "sourced"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Max Contracts 4/6/8/12",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "The Intraday Evaluation does not have a Daily Loss Limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Intraday table: 25K $1,000 / 50K $2,000 / 100K $3,000 / 150K $4,000",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "threshold follows the highest intraday balance (Peak)",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "enforced in real time, including unrealized PnL",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "including unrealized PnL ... never decreases",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Tradovate trails indefinitely; Rithmic locks at target",
+          "confidence": "ambiguous"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Consistency: Not Applied",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].consistency": "disagree",
+            "phases[0].max_drawdown.locks": "disagree",
+            "phases[0].min_trading_days": "disagree",
+            "phases[0].max_days": "disagree",
+            "pricing.initial_fee": "change_available"
+          },
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+            "https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/",
+            "https://apextraderfunding.com/"
+          ],
+          "note": "Both passes reached the site only via r.jina.ai (apextraderfunding.com 403s from TR). NOTE: support.apextraderfunding.com is now DEAD (404) - the help centre moved to apextraderfunding.com/help-center/, so provenance URLs on that old host are stale. CONFIRMED: target $1.5k/$3k/$6k/$9k (=6% every size), NO daily loss limit on this intraday variant (stated twice first-party), max drawdown $1k/$2k/$3k/$4k (=4%/4%/3%/2.667%) - our per-size ladder reconciles exactly - trailing in real time off peak equity INCLUDING unrealized. STRUCTURAL FINDING both passes agree on: Apex relaunched 2026-03-01; evaluations are now ONE-TIME purchases, not monthly subscriptions, and the prior line is \"legacy\" still on recurring billing. DISAGREE (NOT entered): (a) max_drawdown.locks is PLATFORM-DEPENDENT - Rithmic/Wealthcharts lock the threshold at profit-target balance, Tradovate never locks; our corpus models only the never-lock branch. (b) consistency - help centre says \"Not Applied\" in evaluation while the site product JSON carries consistency_rule_percentage:30; both passes found this independently. (c) min_trading_days: pass A read \"Min. Days To Pass 1\", pass B read \"no minimum\". (d) max_days: pass B read an explicit 30-calendar-day access window, pass A read a statement implying none. Per the two-reader doctrine none of these are arbitrated."
+        }
+      ]
+    },
+    "50000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Apex Trader Funding",
+      "firm_slug": "apex",
+      "product": "Intraday Trailing Drawdown Evaluation (EA)",
+      "account_size": 50000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "access_note": "Sourced via r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible). Real page content, corroborated across two mirror URLs; not a direct first-party fetch. Operator trust decision pending.",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Intraday Trailing Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 3000,
+          "min_trading_days": 0,
+          "max_days": 30,
+          "max_contracts": 6,
+          "daily_loss": {
+            "amount_pct": 0,
+            "amount_basis": "initial",
+            "amount_abs": 0,
+            "includes_unrealized": null,
+            "on_breach": null,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "equity_intraday",
+            "amount_pct": 4,
+            "amount_abs": 2000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": null
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.locks",
+          "candidates": [
+            "tradovate_never_locks",
+            "rithmic_wealthcharts_locks_at_profit_target"
+          ],
+          "conservative": "tradovate_never_locks",
+          "basis": "During the EVALUATION the intraday threshold trails the peak the whole way with no lock on Tradovate; some Apex pages state Rithmic/Wealthcharts evaluations freeze at the profit-target balance (50K: $53,000). The Starting-Balance+$100 freeze (50K: $50,100) is a FUNDED (Performance Account) feature, NOT the evaluation. Conservative headline = never-lock (highest ruin). Platform choice, not doc uncertainty.",
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+          ],
+          "inert": true,
+          "inert_reason": "E3 2026-07-17: the lock-vs-never-lock reading is UNOBSERVABLE inside an evaluation. The lock engages only when the peak reaches the profit-target balance (50K: $53,000 = +$3,000), but the evaluation ENDS at that same target. No in-evaluation path can distinguish the readings."
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "25K $1,500 / 50K $3,000 / 100K $6,000 / 150K $9,000",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "No minimum trading days required, may pass in one",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "30 Days access period",
+          "confidence": "sourced"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Max Contracts 4/6/8/12",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "The Intraday Evaluation does not have a Daily Loss Limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Intraday table: 25K $1,000 / 50K $2,000 / 100K $3,000 / 150K $4,000",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "threshold follows the highest intraday balance (Peak)",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "enforced in real time, including unrealized PnL",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "including unrealized PnL ... never decreases",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Tradovate trails indefinitely; Rithmic locks at target",
+          "confidence": "ambiguous"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Consistency: Not Applied",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].consistency": "disagree",
+            "phases[0].max_drawdown.locks": "disagree",
+            "phases[0].min_trading_days": "disagree",
+            "phases[0].max_days": "disagree",
+            "pricing.initial_fee": "change_available"
+          },
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+            "https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/",
+            "https://apextraderfunding.com/"
+          ],
+          "note": "Both passes reached the site only via r.jina.ai (apextraderfunding.com 403s from TR). NOTE: support.apextraderfunding.com is now DEAD (404) - the help centre moved to apextraderfunding.com/help-center/, so provenance URLs on that old host are stale. CONFIRMED: target $1.5k/$3k/$6k/$9k (=6% every size), NO daily loss limit on this intraday variant (stated twice first-party), max drawdown $1k/$2k/$3k/$4k (=4%/4%/3%/2.667%) - our per-size ladder reconciles exactly - trailing in real time off peak equity INCLUDING unrealized. STRUCTURAL FINDING both passes agree on: Apex relaunched 2026-03-01; evaluations are now ONE-TIME purchases, not monthly subscriptions, and the prior line is \"legacy\" still on recurring billing. DISAGREE (NOT entered): (a) max_drawdown.locks is PLATFORM-DEPENDENT - Rithmic/Wealthcharts lock the threshold at profit-target balance, Tradovate never locks; our corpus models only the never-lock branch. (b) consistency - help centre says \"Not Applied\" in evaluation while the site product JSON carries consistency_rule_percentage:30; both passes found this independently. (c) min_trading_days: pass A read \"Min. Days To Pass 1\", pass B read \"no minimum\". (d) max_days: pass B read an explicit 30-calendar-day access window, pass A read a statement implying none. Per the two-reader doctrine none of these are arbitrated."
+        }
+      ]
+    },
+    "100000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Apex Trader Funding",
+      "firm_slug": "apex",
+      "product": "Intraday Trailing Drawdown Evaluation (EA)",
+      "account_size": 100000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "access_note": "Sourced via r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible). Real page content, corroborated across two mirror URLs; not a direct first-party fetch. Operator trust decision pending.",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Intraday Trailing Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 6000,
+          "min_trading_days": 0,
+          "max_days": 30,
+          "max_contracts": 8,
+          "daily_loss": {
+            "amount_pct": 0,
+            "amount_basis": "initial",
+            "amount_abs": 0,
+            "includes_unrealized": null,
+            "on_breach": null,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "equity_intraday",
+            "amount_pct": 3,
+            "amount_abs": 3000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": null
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.locks",
+          "candidates": [
+            "tradovate_never_locks",
+            "rithmic_wealthcharts_locks_at_profit_target"
+          ],
+          "conservative": "tradovate_never_locks",
+          "basis": "During the EVALUATION the intraday threshold trails the peak the whole way with no lock on Tradovate; some Apex pages state Rithmic/Wealthcharts evaluations freeze at the profit-target balance (50K: $53,000). The Starting-Balance+$100 freeze (50K: $50,100) is a FUNDED (Performance Account) feature, NOT the evaluation. Conservative headline = never-lock (highest ruin). Platform choice, not doc uncertainty.",
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+          ],
+          "inert": true,
+          "inert_reason": "E3 2026-07-17: the lock-vs-never-lock reading is UNOBSERVABLE inside an evaluation. The lock engages only when the peak reaches the profit-target balance (50K: $53,000 = +$3,000), but the evaluation ENDS at that same target. No in-evaluation path can distinguish the readings."
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "25K $1,500 / 50K $3,000 / 100K $6,000 / 150K $9,000",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "No minimum trading days required, may pass in one",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "30 Days access period",
+          "confidence": "sourced"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Max Contracts 4/6/8/12",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "The Intraday Evaluation does not have a Daily Loss Limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Intraday table: 25K $1,000 / 50K $2,000 / 100K $3,000 / 150K $4,000",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "threshold follows the highest intraday balance (Peak)",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "enforced in real time, including unrealized PnL",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "including unrealized PnL ... never decreases",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Tradovate trails indefinitely; Rithmic locks at target",
+          "confidence": "ambiguous"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Consistency: Not Applied",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].consistency": "disagree",
+            "phases[0].max_drawdown.locks": "disagree",
+            "phases[0].min_trading_days": "disagree",
+            "phases[0].max_days": "disagree",
+            "pricing.initial_fee": "change_available"
+          },
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+            "https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/",
+            "https://apextraderfunding.com/"
+          ],
+          "note": "Both passes reached the site only via r.jina.ai (apextraderfunding.com 403s from TR). NOTE: support.apextraderfunding.com is now DEAD (404) - the help centre moved to apextraderfunding.com/help-center/, so provenance URLs on that old host are stale. CONFIRMED: target $1.5k/$3k/$6k/$9k (=6% every size), NO daily loss limit on this intraday variant (stated twice first-party), max drawdown $1k/$2k/$3k/$4k (=4%/4%/3%/2.667%) - our per-size ladder reconciles exactly - trailing in real time off peak equity INCLUDING unrealized. STRUCTURAL FINDING both passes agree on: Apex relaunched 2026-03-01; evaluations are now ONE-TIME purchases, not monthly subscriptions, and the prior line is \"legacy\" still on recurring billing. DISAGREE (NOT entered): (a) max_drawdown.locks is PLATFORM-DEPENDENT - Rithmic/Wealthcharts lock the threshold at profit-target balance, Tradovate never locks; our corpus models only the never-lock branch. (b) consistency - help centre says \"Not Applied\" in evaluation while the site product JSON carries consistency_rule_percentage:30; both passes found this independently. (c) min_trading_days: pass A read \"Min. Days To Pass 1\", pass B read \"no minimum\". (d) max_days: pass B read an explicit 30-calendar-day access window, pass A read a statement implying none. Per the two-reader doctrine none of these are arbitrated."
+        }
+      ]
+    },
+    "150000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Apex Trader Funding",
+      "firm_slug": "apex",
+      "product": "Intraday Trailing Drawdown Evaluation (EA)",
+      "account_size": 150000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "access_note": "Sourced via r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible). Real page content, corroborated across two mirror URLs; not a direct first-party fetch. Operator trust decision pending.",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Intraday Trailing Evaluation",
+          "profit_target_pct": 6,
+          "profit_target_abs": 9000,
+          "min_trading_days": 0,
+          "max_days": 30,
+          "max_contracts": 12,
+          "daily_loss": {
+            "amount_pct": 0,
+            "amount_basis": "initial",
+            "amount_abs": 0,
+            "includes_unrealized": null,
+            "on_breach": null,
+            "reset_time_utc": null
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "equity_intraday",
+            "amount_pct": 2.6667,
+            "amount_abs": 4000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": null,
+            "evaluation_frequency": "intraday"
+          },
+          "consistency": []
+        }
+      ],
+      "pricing": {
+        "model": "one_time",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": null,
+        "cycle_days": null,
+        "profit_split_pct": null
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].max_drawdown.locks",
+          "candidates": [
+            "tradovate_never_locks",
+            "rithmic_wealthcharts_locks_at_profit_target"
+          ],
+          "conservative": "tradovate_never_locks",
+          "basis": "During the EVALUATION the intraday threshold trails the peak the whole way with no lock on Tradovate; some Apex pages state Rithmic/Wealthcharts evaluations freeze at the profit-target balance (50K: $53,000). The Starting-Balance+$100 freeze (50K: $50,100) is a FUNDED (Performance Account) feature, NOT the evaluation. Conservative headline = never-lock (highest ruin). Platform choice, not doc uncertainty.",
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/"
+          ],
+          "inert": true,
+          "inert_reason": "E3 2026-07-17: the lock-vs-never-lock reading is UNOBSERVABLE inside an evaluation. The lock engages only when the peak reaches the profit-target balance (50K: $53,000 = +$3,000), but the evaluation ENDS at that same target. No in-evaluation path can distinguish the readings."
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "25K $1,500 / 50K $3,000 / 100K $6,000 / 150K $9,000",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "No minimum trading days required, may pass in one",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "30 Days access period",
+          "confidence": "sourced"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Max Contracts 4/6/8/12",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "The Intraday Evaluation does not have a Daily Loss Limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Intraday table: 25K $1,000 / 50K $2,000 / 100K $3,000 / 150K $4,000",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "threshold follows the highest intraday balance (Peak)",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "enforced in real time, including unrealized PnL",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "including unrealized PnL ... never decreases",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Tradovate trails indefinitely; Rithmic locks at target",
+          "confidence": "ambiguous"
+        },
+        "phases[0].consistency": {
+          "source_url": "https://support.apextraderfunding.com/hc/en-us/articles/45683414022299-Intraday-Trailing-Drawdown-Evaluations",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "Consistency: Not Applied",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": "r.jina.ai reader proxy (Apex geo-blocks this host + remote region; no direct fetch possible)",
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_disagreement",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].daily_loss.amount_pct": "confirmed",
+            "phases[0].max_drawdown.amount_pct": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].consistency": "disagree",
+            "phases[0].max_drawdown.locks": "disagree",
+            "phases[0].min_trading_days": "disagree",
+            "phases[0].max_days": "disagree",
+            "pricing.initial_fee": "change_available"
+          },
+          "sources": [
+            "https://apextraderfunding.com/help-center/intraday-trailing-drawdown-accounts/intraday-trailing-drawdown-explained/",
+            "https://apextraderfunding.com/help-center/additional-helpful-items/daily-loss-limit-explained/",
+            "https://apextraderfunding.com/"
+          ],
+          "note": "Both passes reached the site only via r.jina.ai (apextraderfunding.com 403s from TR). NOTE: support.apextraderfunding.com is now DEAD (404) - the help centre moved to apextraderfunding.com/help-center/, so provenance URLs on that old host are stale. CONFIRMED: target $1.5k/$3k/$6k/$9k (=6% every size), NO daily loss limit on this intraday variant (stated twice first-party), max drawdown $1k/$2k/$3k/$4k (=4%/4%/3%/2.667%) - our per-size ladder reconciles exactly - trailing in real time off peak equity INCLUDING unrealized. STRUCTURAL FINDING both passes agree on: Apex relaunched 2026-03-01; evaluations are now ONE-TIME purchases, not monthly subscriptions, and the prior line is \"legacy\" still on recurring billing. DISAGREE (NOT entered): (a) max_drawdown.locks is PLATFORM-DEPENDENT - Rithmic/Wealthcharts lock the threshold at profit-target balance, Tradovate never locks; our corpus models only the never-lock branch. (b) consistency - help centre says \"Not Applied\" in evaluation while the site product JSON carries consistency_rule_percentage:30; both passes found this independently. (c) min_trading_days: pass A read \"Min. Days To Pass 1\", pass B read \"no minimum\". (d) max_days: pass B read an explicit 30-calendar-day access window, pass A read a statement implying none. Per the two-reader doctrine none of these are arbitrated."
+        }
+      ]
+    }
+  }
+}

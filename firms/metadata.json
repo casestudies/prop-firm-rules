@@ -1,0 +1,596 @@
+{
+  "firmCount": 59,
+  "anchor": "2026-08-17",
+  "firms": [
+    {
+      "firm": "Alpha Futures",
+      "slug": "alpha-advanced",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Alpha Capital Group",
+      "slug": "alpha-capital-one",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Alpha Capital Group",
+      "slug": "alpha-capital-pro",
+      "multiPhase": true,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Alpha Futures",
+      "slug": "alpha-futures-direct",
+      "multiPhase": false,
+      "citedFieldCount": 17,
+      "lastChecked": "2026-08-12",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Alpha Futures",
+      "slug": "alpha-zero",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Apex Trader Funding",
+      "slug": "apex",
+      "multiPhase": false,
+      "citedFieldCount": 12,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Apex Trader Funding",
+      "slug": "apex-eod",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-08-12",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Aqua Futures",
+      "slug": "aqua-futures",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "BluSky Trading",
+      "slug": "blu-sky-trading",
+      "multiPhase": true,
+      "citedFieldCount": 17,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "BluSky Trading",
+      "slug": "blu-sky-trading-launch",
+      "multiPhase": true,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Blue Guardian Futures",
+      "slug": "blue-guardian-futures",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Blueberry Funded",
+      "slug": "blueberry-funded",
+      "multiPhase": true,
+      "citedFieldCount": 18,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Bulenox",
+      "slug": "bulenox",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "City Traders Imperium",
+      "slug": "city-traders-imperium",
+      "multiPhase": true,
+      "citedFieldCount": 19,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Day Trader Funding",
+      "slug": "day-trader-funding",
+      "multiPhase": false,
+      "citedFieldCount": 8,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "E8 Markets",
+      "slug": "e8-futures",
+      "multiPhase": false,
+      "citedFieldCount": 8,
+      "lastChecked": "2026-08-17",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "E8 Markets",
+      "slug": "e8-markets",
+      "multiPhase": false,
+      "citedFieldCount": 13,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Earn2Trade",
+      "slug": "earn2trade",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Elite Trader Funding",
+      "slug": "elite-trader-funding",
+      "multiPhase": false,
+      "citedFieldCount": 17,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Elite Trader Funding",
+      "slug": "elite-trader-funding-eod",
+      "multiPhase": false,
+      "citedFieldCount": 20,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Fintokei",
+      "slug": "fintokei",
+      "multiPhase": true,
+      "citedFieldCount": 18,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FTMO",
+      "slug": "ftmo",
+      "multiPhase": true,
+      "citedFieldCount": 14,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FTMO",
+      "slug": "ftmo-1step",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Funded Trading Plus",
+      "slug": "funded-trading-plus",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Funded Trading Plus",
+      "slug": "funded-trading-plus-2step",
+      "multiPhase": true,
+      "citedFieldCount": 25,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Funded Trading Plus",
+      "slug": "funded-trading-plus-instant",
+      "multiPhase": false,
+      "citedFieldCount": 12,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundedNext Futures",
+      "slug": "fundednext",
+      "multiPhase": false,
+      "citedFieldCount": 11,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundedNext Futures",
+      "slug": "fundednext-flex",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundedNext Futures",
+      "slug": "fundednext-rapid",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundedNext Futures",
+      "slug": "fundednext-rapid-daily",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundingPips",
+      "slug": "funding-pips",
+      "multiPhase": true,
+      "citedFieldCount": 13,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FundingPips",
+      "slug": "funding-pips-pro",
+      "multiPhase": true,
+      "citedFieldCount": 12,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "FXIFY",
+      "slug": "fxify",
+      "multiPhase": true,
+      "citedFieldCount": 17,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Goat Funded Futures",
+      "slug": "goat-funded-futures",
+      "multiPhase": false,
+      "citedFieldCount": 8,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Goat Funded Trader",
+      "slug": "goat-funded-trader",
+      "multiPhase": false,
+      "citedFieldCount": 18,
+      "lastChecked": "2026-08-12",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Instant Funding",
+      "slug": "instant-funding",
+      "multiPhase": false,
+      "citedFieldCount": 15,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Lark Funding",
+      "slug": "lark-funding",
+      "multiPhase": false,
+      "citedFieldCount": 14,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Leeloo Trading",
+      "slug": "leeloo-trading",
+      "multiPhase": false,
+      "citedFieldCount": 13,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Lucid Trading",
+      "slug": "lucid-trading",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Lux Trading Firm",
+      "slug": "lux-trading-firm",
+      "multiPhase": false,
+      "citedFieldCount": 8,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Maven Trading",
+      "slug": "maven-trading",
+      "multiPhase": false,
+      "citedFieldCount": 13,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Ment Funding",
+      "slug": "ment-funding",
+      "multiPhase": false,
+      "citedFieldCount": 18,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Ment Funding",
+      "slug": "ment-funding-futures",
+      "multiPhase": false,
+      "citedFieldCount": 19,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "MyFundedFutures",
+      "slug": "myfundedfutures",
+      "multiPhase": false,
+      "citedFieldCount": 11,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Nexgen ProTrader Funding",
+      "slug": "nexgen-protrader",
+      "multiPhase": false,
+      "citedFieldCount": 7,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "OFP Funding",
+      "slug": "ofp-funding",
+      "multiPhase": false,
+      "citedFieldCount": 21,
+      "lastChecked": "2026-08-12",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "OneUp Trader",
+      "slug": "oneup-trader",
+      "multiPhase": false,
+      "citedFieldCount": 12,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Phidias",
+      "slug": "phidias-e2l",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Phidias",
+      "slug": "phidias-fundamental",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Purdia Capital",
+      "slug": "purdia-capital",
+      "multiPhase": false,
+      "citedFieldCount": 7,
+      "lastChecked": "2026-08-16",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "SabioTrade",
+      "slug": "sabiotrade",
+      "multiPhase": false,
+      "citedFieldCount": 17,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Take Profit Trader",
+      "slug": "take-profit-trader",
+      "multiPhase": false,
+      "citedFieldCount": 9,
+      "lastChecked": "2026-07-22",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "The Trading Pit",
+      "slug": "the-trading-pit",
+      "multiPhase": false,
+      "citedFieldCount": 20,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "The5ers",
+      "slug": "the5ers",
+      "multiPhase": true,
+      "citedFieldCount": 12,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Top One Futures",
+      "slug": "top-one-futures",
+      "multiPhase": false,
+      "citedFieldCount": 7,
+      "lastChecked": "2026-08-17",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Topstep",
+      "slug": "topstep",
+      "multiPhase": false,
+      "citedFieldCount": 19,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "TradeDay",
+      "slug": "tradeday",
+      "multiPhase": false,
+      "citedFieldCount": 16,
+      "lastChecked": "2026-08-12",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Tradeify",
+      "slug": "tradeify",
+      "multiPhase": false,
+      "citedFieldCount": 10,
+      "lastChecked": "2026-07-30",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "UProfit Trader",
+      "slug": "uprofit-trader",
+      "multiPhase": false,
+      "citedFieldCount": 19,
+      "lastChecked": "2026-07-31",
+      "hasGoldenVector": false,
+      "hasDisclosedAmbiguity": false,
+      "hasIndependentRecheck": true
+    }
+  ]
+}

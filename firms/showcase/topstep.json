@@ -1,0 +1,828 @@
+{
+  "firm": "Topstep",
+  "slug": "topstep",
+  "accountSizes": [
+    50000,
+    100000,
+    150000
+  ],
+  "lastChecked": "2026-07-31",
+  "lastIndependentRecheck": "2026-07-31",
+  "sizes": {
+    "50000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Topstep",
+      "firm_slug": "topstep",
+      "product": "Trading Combine",
+      "account_size": 50000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Trading Combine",
+          "profit_target_pct": 6,
+          "profit_target_abs": 3000,
+          "min_trading_days": 2,
+          "max_days": null,
+          "max_contracts": 5,
+          "max_micros": 50,
+          "daily_loss": {
+            "amount_pct": 2,
+            "amount_basis": "initial",
+            "amount_abs": 1000,
+            "on_breach": "lockout",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00",
+            "optional": true
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_eod",
+            "amount_pct": 4,
+            "amount_abs": 2000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": [
+            {
+              "metric": "best_day_pct_of_total_profit",
+              "limit": 50,
+              "enforced_at": "pass",
+              "effect": "block"
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "subscription_monthly",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": 5,
+        "min_winning_day_pnl": 150,
+        "min_payout": 125,
+        "cycle_days": null,
+        "profit_split_pct": 90
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "22:00",
+            "23:00"
+          ],
+          "conservative": "23:00",
+          "basis": "5 PM CT reset shifts between 22:00 UTC (CDT) and 23:00 UTC (CST) across US daylight-saving changes; the firm publishes the local time, not a fixed UTC.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.present",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": false,
+          "inert": false,
+          "basis": "E2(b)/E3: the DLL is OPTIONAL at checkout, not a property of the account. Firm: 'The Daily Loss Limit (DLL) is optional in the Trading Combine ... You now have the option to add a Daily Loss Limit at checkout.' A Combine sold without it has NO daily loss limit; only the MLL constrains it. Conservative headline = ABSENT (breach day 19 vs 20; earlier failure = higher ruin). The hardcoded DLL models only the bought variant and under-estimates ruin for the cheaper account.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].consistency[0].metric",
+          "candidates": [
+            "best_day_pct_of_total_profit",
+            "best_day_pct_of_profit_target"
+          ],
+          "conservative": "best_day_pct_of_profit_target",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. Topstep publishes the 50% cap two ways on one page: prose (\"at or below 50% of your Profit Target\" -> fixed denominator = profit_target) and a formula (\"Best Day Profit / Total Profit = Best Day %\" -> denominator = total_profit_so_far). The two readings are IDENTICAL exactly at the moment of passing (total_profit_so_far == profit_target by definition of having just reached it) and diverge only if profit overshoots the target before the check applies, where the total_profit denominator grows and the resulting percentage is SMALLER (more lenient) than against the fixed target. profit_target is therefore the higher-ruin (conservative) reading. NOT changed to conservative: tools/build-firm-presets.js line 38 (consistencyPct()) does an EXACT STRING MATCH on metric===\"best_day_pct_of_total_profit\" to wire this constraint live into the simulator; switching the stored string would silently return 0 and DISABLE Topsteps consistency check entirely - a far worse outcome than sitting on the lenient side of a narrow overshoot-only edge case. Same shape as the adjacent, already-disclosed consistency.effect approximation (block vs raise_target) on this same product. Disclosed via ambiguities[], value left as the live-wired string.",
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "\"$50K\" = \"$3,000\"; \"$100K\" = \"$6,000\"; \"$150K\" = \"$9,000\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "You can pass in as few as two days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "no published maximum trading period",
+          "confidence": "derived"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:5 / $100K:10 / $150K:15 contracts",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$1,000 / $100K:$2,000 / $150K:$3,000",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "both realized and unrealized",
+          "confidence": "sourced",
+          "reasoning": "E3 2026-07-17: closed derived->sourced. DLL page: 'monitored in real-time using Net P&L - both realized and unrealized.'"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "flattened ... No new trades until 5 PM CT next session",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.reset_time_utc": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "reset 5 PM CT next session",
+          "confidence": "ambiguous"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$2,000 / $100K:$3,000 / $150K:$4,500",
+          "confidence": "reconciled"
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "The MLL is a trailing limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "rises as your end-of-day balance grows",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "never moves down",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "Both realized and unrealized P&L count toward it",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "reaches your starting balance, it locks permanently",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. The firm example does not discriminate this field (blind under reconciliation-discriminates.test.js): mutating it to any legal value still reconciles. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "single best day ... at or below 50% of your Profit Target",
+          "confidence": "sourced"
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "90/10 split - you keep 90%",
+          "confidence": "sourced"
+        },
+        "payout.min_payout": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "Minimum Payout: $125",
+          "confidence": "sourced"
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "5 winning days of $150+ Net P&L",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_abs": "confirmed",
+            "phases[0].daily_loss.optional": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_abs": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].consistency.limit": "confirmed",
+            "phases[0].consistency.effect": "mismatch",
+            "phases[0].consistency.metric": "mismatch"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+            "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ],
+          "note": "CONFIRMED by both blind passes: targets $3k/$6k/$9k (=6%), MLL $2k/$3k/$4.5k, EOD-balance trail locking at starting balance, DLL optional and size-fixed, 5PM CT reset, min 2 days, no time limit. MISMATCH (NOT entered): consistency.effect - both passes read \"If it exceeds that, your Profit Target increases ... not a rule break\"; corpus stores effect:\"block\". Entering \"raise_target\" would silently DELETE the constraint, because tools/build-firm-presets.js maps only effect===\"block\" to a live consistencyPct. Our \"block\" is a CONSERVATIVE approximation (overstates difficulty, never understates) and is retained deliberately pending an engine that can express a rising target. Also MISMATCH: both passes independently found Topstep contradicting ITSELF on the denominator - prose \"50% of your Profit Target\" vs its own formula \"Best Day Profit / Total Profit\". Topstep publishes NO percentages; our pct values are exact arithmetic on published dollars."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "changed",
+          "fields": {
+            "phases[0].consistency[0].metric": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding that sat unmodeled for 9 days into a proper ambiguities[] entry. Live value UNCHANGED (see basis) to avoid breaking build-firm-presets.js consistencyPct() exact-match wiring."
+        }
+      ]
+    },
+    "100000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Topstep",
+      "firm_slug": "topstep",
+      "product": "Trading Combine",
+      "account_size": 100000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Trading Combine",
+          "profit_target_pct": 6,
+          "profit_target_abs": 6000,
+          "min_trading_days": 2,
+          "max_days": null,
+          "max_contracts": 10,
+          "max_micros": 100,
+          "daily_loss": {
+            "amount_pct": 2,
+            "amount_basis": "initial",
+            "amount_abs": 2000,
+            "on_breach": "lockout",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00",
+            "optional": true
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_eod",
+            "amount_pct": 3,
+            "amount_abs": 3000,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": [
+            {
+              "metric": "best_day_pct_of_total_profit",
+              "limit": 50,
+              "enforced_at": "pass",
+              "effect": "block"
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "subscription_monthly",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": 5,
+        "min_winning_day_pnl": 150,
+        "min_payout": 125,
+        "cycle_days": null,
+        "profit_split_pct": 90
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "22:00",
+            "23:00"
+          ],
+          "conservative": "23:00",
+          "basis": "5 PM CT reset shifts between 22:00 UTC (CDT) and 23:00 UTC (CST) across US daylight-saving changes; the firm publishes the local time, not a fixed UTC.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.present",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": false,
+          "inert": false,
+          "basis": "E2(b)/E3: the DLL is OPTIONAL at checkout, not a property of the account. Firm: 'The Daily Loss Limit (DLL) is optional in the Trading Combine ... You now have the option to add a Daily Loss Limit at checkout.' A Combine sold without it has NO daily loss limit; only the MLL constrains it. Conservative headline = ABSENT (breach day 19 vs 20; earlier failure = higher ruin). The hardcoded DLL models only the bought variant and under-estimates ruin for the cheaper account.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].consistency[0].metric",
+          "candidates": [
+            "best_day_pct_of_total_profit",
+            "best_day_pct_of_profit_target"
+          ],
+          "conservative": "best_day_pct_of_profit_target",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. Topstep publishes the 50% cap two ways on one page: prose (\"at or below 50% of your Profit Target\" -> fixed denominator = profit_target) and a formula (\"Best Day Profit / Total Profit = Best Day %\" -> denominator = total_profit_so_far). The two readings are IDENTICAL exactly at the moment of passing (total_profit_so_far == profit_target by definition of having just reached it) and diverge only if profit overshoots the target before the check applies, where the total_profit denominator grows and the resulting percentage is SMALLER (more lenient) than against the fixed target. profit_target is therefore the higher-ruin (conservative) reading. NOT changed to conservative: tools/build-firm-presets.js line 38 (consistencyPct()) does an EXACT STRING MATCH on metric===\"best_day_pct_of_total_profit\" to wire this constraint live into the simulator; switching the stored string would silently return 0 and DISABLE Topsteps consistency check entirely - a far worse outcome than sitting on the lenient side of a narrow overshoot-only edge case. Same shape as the adjacent, already-disclosed consistency.effect approximation (block vs raise_target) on this same product. Disclosed via ambiguities[], value left as the live-wired string.",
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "\"$50K\" = \"$3,000\"; \"$100K\" = \"$6,000\"; \"$150K\" = \"$9,000\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "You can pass in as few as two days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "no published maximum trading period",
+          "confidence": "derived"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:5 / $100K:10 / $150K:15 contracts",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$1,000 / $100K:$2,000 / $150K:$3,000",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "both realized and unrealized",
+          "confidence": "sourced",
+          "reasoning": "E3 2026-07-17: closed derived->sourced. DLL page: 'monitored in real-time using Net P&L - both realized and unrealized.'"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "flattened ... No new trades until 5 PM CT next session",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.reset_time_utc": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "reset 5 PM CT next session",
+          "confidence": "ambiguous"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$2,000 / $100K:$3,000 / $150K:$4,500",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "The MLL is a trailing limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "rises as your end-of-day balance grows",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "never moves down",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "Both realized and unrealized P&L count toward it",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "reaches your starting balance, it locks permanently",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "single best day ... at or below 50% of your Profit Target",
+          "confidence": "sourced"
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "90/10 split - you keep 90%",
+          "confidence": "sourced"
+        },
+        "payout.min_payout": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "Minimum Payout: $125",
+          "confidence": "sourced"
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "5 winning days of $150+ Net P&L",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_abs": "confirmed",
+            "phases[0].daily_loss.optional": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_abs": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].consistency.limit": "confirmed",
+            "phases[0].consistency.effect": "mismatch",
+            "phases[0].consistency.metric": "mismatch"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+            "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ],
+          "note": "CONFIRMED by both blind passes: targets $3k/$6k/$9k (=6%), MLL $2k/$3k/$4.5k, EOD-balance trail locking at starting balance, DLL optional and size-fixed, 5PM CT reset, min 2 days, no time limit. MISMATCH (NOT entered): consistency.effect - both passes read \"If it exceeds that, your Profit Target increases ... not a rule break\"; corpus stores effect:\"block\". Entering \"raise_target\" would silently DELETE the constraint, because tools/build-firm-presets.js maps only effect===\"block\" to a live consistencyPct. Our \"block\" is a CONSERVATIVE approximation (overstates difficulty, never understates) and is retained deliberately pending an engine that can express a rising target. Also MISMATCH: both passes independently found Topstep contradicting ITSELF on the denominator - prose \"50% of your Profit Target\" vs its own formula \"Best Day Profit / Total Profit\". Topstep publishes NO percentages; our pct values are exact arithmetic on published dollars."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "changed",
+          "fields": {
+            "phases[0].consistency[0].metric": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding that sat unmodeled for 9 days into a proper ambiguities[] entry. Live value UNCHANGED (see basis) to avoid breaking build-firm-presets.js consistencyPct() exact-match wiring."
+        }
+      ]
+    },
+    "150000": {
+      "corpus_version": "M2-2026-07-16",
+      "firm": "Topstep",
+      "firm_slug": "topstep",
+      "product": "Trading Combine",
+      "account_size": 150000,
+      "currency": "USD",
+      "verification_status": "verified",
+      "retrieved_at": "2026-07-16",
+      "steps": 1,
+      "phases": [
+        {
+          "name": "Trading Combine",
+          "profit_target_pct": 6,
+          "profit_target_abs": 9000,
+          "min_trading_days": 2,
+          "max_days": null,
+          "max_contracts": 15,
+          "max_micros": 150,
+          "daily_loss": {
+            "amount_pct": 2,
+            "amount_basis": "initial",
+            "amount_abs": 3000,
+            "on_breach": "lockout",
+            "includes_unrealized": true,
+            "reset_time_utc": "23:00",
+            "optional": true
+          },
+          "max_drawdown": {
+            "type": "trailing",
+            "basis": "balance_eod",
+            "amount_pct": 3,
+            "amount_abs": 4500,
+            "anchor": "highest_water_mark",
+            "includes_unrealized": true,
+            "locks": {
+              "at": "initial_plus_abs",
+              "value": 0
+            },
+            "evaluation_frequency": "eod"
+          },
+          "consistency": [
+            {
+              "metric": "best_day_pct_of_total_profit",
+              "limit": 50,
+              "enforced_at": "pass",
+              "effect": "block"
+            }
+          ]
+        }
+      ],
+      "pricing": {
+        "model": "subscription_monthly",
+        "initial_fee": null,
+        "reset_price_alive": null,
+        "reset_price_after_breach": null,
+        "fee_refunded_at_first_payout": null,
+        "refund_amount": null
+      },
+      "payout": {
+        "first_payout_after_days": 5,
+        "min_winning_day_pnl": 150,
+        "min_payout": 125,
+        "cycle_days": null,
+        "profit_split_pct": 90
+      },
+      "ambiguities": [
+        {
+          "field": "phases[0].daily_loss.reset_time_utc",
+          "candidates": [
+            "22:00",
+            "23:00"
+          ],
+          "conservative": "23:00",
+          "basis": "5 PM CT reset shifts between 22:00 UTC (CDT) and 23:00 UTC (CST) across US daylight-saving changes; the firm publishes the local time, not a fixed UTC.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].daily_loss.present",
+          "candidates": [
+            true,
+            false
+          ],
+          "conservative": false,
+          "inert": false,
+          "basis": "E2(b)/E3: the DLL is OPTIONAL at checkout, not a property of the account. Firm: 'The Daily Loss Limit (DLL) is optional in the Trading Combine ... You now have the option to add a Daily Loss Limit at checkout.' A Combine sold without it has NO daily loss limit; only the MLL constrains it. Conservative headline = ABSENT (breach day 19 vs 20; earlier failure = higher ruin). The hardcoded DLL models only the bought variant and under-estimates ruin for the cheaper account.",
+          "sources": [
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ]
+        },
+        {
+          "field": "phases[0].consistency[0].metric",
+          "candidates": [
+            "best_day_pct_of_total_profit",
+            "best_day_pct_of_profit_target"
+          ],
+          "conservative": "best_day_pct_of_profit_target",
+          "basis": "Flagged 2026-07-22 (run 2), never modeled until now. Topstep publishes the 50% cap two ways on one page: prose (\"at or below 50% of your Profit Target\" -> fixed denominator = profit_target) and a formula (\"Best Day Profit / Total Profit = Best Day %\" -> denominator = total_profit_so_far). The two readings are IDENTICAL exactly at the moment of passing (total_profit_so_far == profit_target by definition of having just reached it) and diverge only if profit overshoots the target before the check applies, where the total_profit denominator grows and the resulting percentage is SMALLER (more lenient) than against the fixed target. profit_target is therefore the higher-ruin (conservative) reading. NOT changed to conservative: tools/build-firm-presets.js line 38 (consistencyPct()) does an EXACT STRING MATCH on metric===\"best_day_pct_of_total_profit\" to wire this constraint live into the simulator; switching the stored string would silently return 0 and DISABLE Topsteps consistency check entirely - a far worse outcome than sitting on the lenient side of a narrow overshoot-only edge case. Same shape as the adjacent, already-disclosed consistency.effect approximation (block vs raise_target) on this same product. Disclosed via ambiguities[], value left as the live-wired string.",
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ]
+        }
+      ],
+      "provenance": {
+        "phases[0].profit_target_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "\"$50K\" = \"$3,000\"; \"$100K\" = \"$6,000\"; \"$150K\" = \"$9,000\"",
+          "confidence": "sourced"
+        },
+        "phases[0].min_trading_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "You can pass in as few as two days",
+          "confidence": "sourced"
+        },
+        "phases[0].max_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "no published maximum trading period",
+          "confidence": "derived"
+        },
+        "phases[0].max_contracts": {
+          "source_url": "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:5 / $100K:10 / $150K:15 contracts",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$1,000 / $100K:$2,000 / $150K:$3,000",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "both realized and unrealized",
+          "confidence": "sourced",
+          "reasoning": "E3 2026-07-17: closed derived->sourced. DLL page: 'monitored in real-time using Net P&L - both realized and unrealized.'"
+        },
+        "phases[0].daily_loss.on_breach": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "flattened ... No new trades until 5 PM CT next session",
+          "confidence": "sourced"
+        },
+        "phases[0].daily_loss.reset_time_utc": {
+          "source_url": "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account",
+          "retrieved_at": "2026-07-16",
+          "quote": "reset 5 PM CT next session",
+          "confidence": "ambiguous"
+        },
+        "phases[0].max_drawdown.amount_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "$50K:$2,000 / $100K:$3,000 / $150K:$4,500",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].max_drawdown.type": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "The MLL is a trailing limit",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.basis": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "rises as your end-of-day balance grows",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.anchor": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "never moves down",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.includes_unrealized": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "Both realized and unrealized P&L count toward it",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.locks": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "quote": "reaches your starting balance, it locks permanently",
+          "confidence": "sourced",
+          "reasoning": "E1 2026-07-17: downgraded reconciled->sourced. No reconciling golden vector exists for this account size, so 'reconciled' was unsupported. Confidence now rests on the source quote alone."
+        },
+        "phases[0].consistency": {
+          "source_url": "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+          "retrieved_at": "2026-07-16",
+          "quote": "single best day ... at or below 50% of your Profit Target",
+          "confidence": "sourced"
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "90/10 split - you keep 90%",
+          "confidence": "sourced"
+        },
+        "payout.min_payout": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "Minimum Payout: $125",
+          "confidence": "sourced"
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://help.topstep.com/en/articles/8284233-topstep-payout-policy",
+          "retrieved_at": "2026-07-16",
+          "quote": "5 winning days of $150+ Net P&L",
+          "confidence": "sourced"
+        },
+        "phases[0].max_drawdown.evaluation_frequency": {
+          "source_url": "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+          "retrieved_at": "2026-07-16",
+          "retrieved_via": null,
+          "quote": "(derived from max_drawdown.basis; see reasoning)",
+          "confidence": "derived",
+          "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        }
+      },
+      "rechecks": [
+        {
+          "checked_at": "2026-07-22",
+          "by": "check-firms",
+          "method": "two-pass-blind-independent",
+          "passes": 2,
+          "outcome": "confirmed_with_mismatch",
+          "fields": {
+            "phases[0].profit_target_pct": "confirmed",
+            "phases[0].min_trading_days": "confirmed",
+            "phases[0].max_days": "confirmed",
+            "phases[0].daily_loss.amount_abs": "confirmed",
+            "phases[0].daily_loss.optional": "confirmed",
+            "phases[0].daily_loss.includes_unrealized": "confirmed",
+            "phases[0].max_drawdown.amount_abs": "confirmed",
+            "phases[0].max_drawdown.type": "confirmed",
+            "phases[0].max_drawdown.basis": "confirmed",
+            "phases[0].max_drawdown.locks": "confirmed",
+            "phases[0].consistency.limit": "confirmed",
+            "phases[0].consistency.effect": "mismatch",
+            "phases[0].consistency.metric": "mismatch"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284197-trading-combine-parameters",
+            "https://help.topstep.com/en/articles/8284204-what-is-the-maximum-loss-limit",
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep",
+            "https://help.topstep.com/en/articles/10490293-daily-loss-limit-in-the-trading-combine-and-express-funded-account"
+          ],
+          "note": "CONFIRMED by both blind passes: targets $3k/$6k/$9k (=6%), MLL $2k/$3k/$4.5k, EOD-balance trail locking at starting balance, DLL optional and size-fixed, 5PM CT reset, min 2 days, no time limit. MISMATCH (NOT entered): consistency.effect - both passes read \"If it exceeds that, your Profit Target increases ... not a rule break\"; corpus stores effect:\"block\". Entering \"raise_target\" would silently DELETE the constraint, because tools/build-firm-presets.js maps only effect===\"block\" to a live consistencyPct. Our \"block\" is a CONSERVATIVE approximation (overstates difficulty, never understates) and is retained deliberately pending an engine that can express a rising target. Also MISMATCH: both passes independently found Topstep contradicting ITSELF on the denominator - prose \"50% of your Profit Target\" vs its own formula \"Best Day Profit / Total Profit\". Topstep publishes NO percentages; our pct values are exact arithmetic on published dollars."
+        },
+        {
+          "checked_at": "2026-07-31",
+          "by": "corpus-update-existing-batch4",
+          "method": "modeled-from-prior-run-2-finding",
+          "passes": 2,
+          "outcome": "changed",
+          "fields": {
+            "phases[0].consistency[0].metric": "now-disclosed-as-ambiguous"
+          },
+          "sources": [
+            "https://help.topstep.com/en/articles/8284208-consistency-at-topstep"
+          ],
+          "note": "Converted a run-2 (2026-07-22) finding that sat unmodeled for 9 days into a proper ambiguities[] entry. Live value UNCHANGED (see basis) to avoid breaking build-firm-presets.js consistencyPct() exact-match wiring."
+        }
+      ]
+    }
+  }
+}

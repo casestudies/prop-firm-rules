@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below (CC BY 4.0 requires attribution with a link)."
+title: "PropSurvival prop-firm rules corpus — public dataset showcase"
+type: dataset
+authors:
+  - name: "PropSurvival"
+    website: "https://propsurvival.com"
+license: CC-BY-4.0
+url: "https://propsurvival.com/research-methodology"
+repository-code: "https://github.com/casestudies/prop-firm-rules"
+version: "2026-08-17"
+date-released: "2026-08-17"
+keywords:
+  - prop firm
+  - proprietary trading
+  - funded trader
+  - drawdown
+  - consistency rule
+  - open data
+abstract: "Sourced, dated and re-checked rule fields for proprietary-trading-firm evaluation programs (profit target, daily loss, drawdown mechanics, consistency, payout terms, pricing). Showcase: five firms in full detail plus a metadata table for all tracked firms. Counts, not rankings."
