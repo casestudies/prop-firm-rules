@@ -15,7 +15,7 @@ not the corpus itself — see **What's not here** below.
 | `SCHEMA.md` | field definitions and enum vocabularies for every field this corpus records |
 | `METHODOLOGY.md` | how a value gets sourced, disclosed when ambiguous, and re-checked |
 | `firms/showcase/*.json` | five firms in full detail — values, provenance quotes, retrieval and last-checked dates, every account size tracked |
-| `firms/metadata.json` (+ `firms/metadata.md`) | firm name, cited-field count, last-checked date and verification-coverage flags for all 59 tracked firms — no rule values |
+| `firms/metadata.json` (+ `firms/metadata.md`) | firm name, cited-field count, last-checked date and verification-coverage flags for all 60 tracked firms — no rule values |
 | `LICENSE.md` | CC BY 4.0 license declaration (short form, links to the full legal code) |
 | `ATTRIBUTION.md` | how to credit this dataset if you use it |
 
@@ -26,15 +26,15 @@ drawdown basis this corpus records (intraday equity, end-of-day balance, and
 closed-trade balance), a consistency rule, a stated no-daily-loss-limit product,
 and a two-step evaluation:
 
-- **FTMO** (`firms/showcase/ftmo.json`) — 2-step evaluation, static drawdown. 3 account size(s), last checked 2026-07-31.
+- **FTMO** (`firms/showcase/ftmo.json`) — 2-step evaluation, static drawdown. 3 account size(s), last checked 2026-09-06.
 - **Apex Trader Funding** (`firms/showcase/apex.json`) — intraday-trailing drawdown, no daily loss limit. 4 account size(s), last checked 2026-07-22.
 - **E8 Markets** (`firms/showcase/e8-markets.json`) — closed-balance trailing drawdown. 8 account size(s), last checked 2026-07-30.
 - **Topstep** (`firms/showcase/topstep.json`) — consistency rule, end-of-day trailing drawdown. 3 account size(s), last checked 2026-07-31.
-- **MyFundedFutures** (`firms/showcase/myfundedfutures.json`) — no daily loss limit (stated by the firm), end-of-day trailing drawdown. 2 account size(s), last checked 2026-07-22.
+- **MyFundedFutures** (`firms/showcase/myfundedfutures.json`) — no daily loss limit (stated by the firm), end-of-day trailing drawdown. 2 account size(s), last checked 2026-09-06.
 
 ## What's not here
 
-This repository does not contain: the full value matrix for all 59
+This repository does not contain: the full value matrix for all 60
 tracked firms, per-account-size figures for any firm beyond the five above, the
 complete source-quote bank, the golden-vector correctness suite, any simulation
 or build tooling, or anything from the operating notes behind this project. The
@@ -49,6 +49,7 @@ reading:
 - Apex's trailing drawdown, in detail: https://propsurvival.com/apex-trailing-drawdown.html
 - Topstep's consistency rule, in detail: https://propsurvival.com/topstep-consistency-rule.html
 - This corpus's full methodology, on-site: https://propsurvival.com/research-methodology.html
+- Citation page (CC BY 4.0, CSV/JSON download, one row per firm): https://propsurvival.com/research/prop-firm-rules-census-2026
 
 ## License
 
@@ -56,8 +57,8 @@ CC BY 4.0 — see `LICENSE.md` and `ATTRIBUTION.md`.
 
 ## Citation
 
-PropSurvival. Prop-firm challenge rule corpus (public dataset showcase) [Dataset]. 59 tracked firms, 5 shown in full detail, 243 account-size configurations in the complete corpus. Retrieved from https://github.com/casestudies/prop-firm-rules
+PropSurvival. Prop-firm challenge rule corpus (public dataset showcase) [Dataset]. 60 tracked firms, 5 shown in full detail, 247 account-size configurations in the complete corpus. Retrieved from https://github.com/casestudies/prop-firm-rules
 
 ---
 
-This snapshot is dated 2026-08-17. Generated from a private, verified rule corpus; the generation tooling is not part of this repository.
+This snapshot is dated 2026-09-10. Generated from a private, verified rule corpus; the generation tooling is not part of this repository.

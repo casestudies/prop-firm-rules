@@ -119,7 +119,7 @@ from a firm's own published documentation or computed from fields that are.
 | `sources` | array of URLs | sources consulted for this pass |
 | `note` | string | the pass's own written summary |
 
-## Metadata table fields (`firms/metadata.json`, all 59 tracked firms)
+## Metadata table fields (`firms/metadata.json`, all 60 tracked firms)
 
 Coverage facts about the verification process for a firm — never a rule value.
 None of the fields below can answer "what is this firm's drawdown / daily-loss /

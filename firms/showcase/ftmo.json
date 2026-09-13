@@ -6,8 +6,8 @@
     100000,
     200000
   ],
-  "lastChecked": "2026-07-31",
-  "lastIndependentRecheck": "2026-07-31",
+  "lastChecked": "2026-09-06",
+  "lastIndependentRecheck": "2026-09-06",
   "sizes": {
     "50000": {
       "corpus_version": "M2-2026-07-16",
@@ -81,7 +81,7 @@
         "refund_amount": null
       },
       "payout": {
-        "first_payout_after_days": null,
+        "first_payout_after_days": 14,
         "cycle_days": null,
         "profit_split_pct": 80
       },
@@ -188,6 +188,20 @@
           "quote": "(derived from max_drawdown.basis; see reasoning)",
           "confidence": "derived",
           "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "14th or any following day after the first placed trade",
+          "confidence": "sourced",
+          "reasoning": "Reward claim on the 14th or any following day after the first placed trade on the specific account. No fixed recurring calendar cycle published on this FAQ."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "You receive**80%** of the profit (increases to 90% if Scaling Plan or Premium Programme conditions are met).",
+          "confidence": "sourced",
+          "reasoning": "2-Step base 80% (jina fetch; HTML wraps the 80% in tags). 90% is Scaling/Premium, not the default book. 1-Step 90% lives on ftmo-1step."
         }
       },
       "documented_omissions": [
@@ -238,6 +252,22 @@
             "https://ftmo.com/en/trading-objectives/"
           ],
           "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        },
+        {
+          "checked_at": "2026-09-06",
+          "by": "seo3-u22e-payout-provenance",
+          "method": "official-page-fetch-quote-substring",
+          "passes": 1,
+          "outcome": "changed",
+          "fields": {
+            "payout.first_payout_after_days": "changed",
+            "payout.cycle_days": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/"
+          ],
+          "note": "U22e payout provenance 2026-09-06. first_payout_after_days null→14 from FTMO withdraw FAQ. Cycle remains null (no fixed recurring cycle on that FAQ). Split 80% 2-Step base confirmed."
         }
       ]
     },
@@ -313,7 +343,7 @@
         "refund_amount": null
       },
       "payout": {
-        "first_payout_after_days": null,
+        "first_payout_after_days": 14,
         "cycle_days": null,
         "profit_split_pct": 80
       },
@@ -420,6 +450,20 @@
           "quote": "(derived from max_drawdown.basis; see reasoning)",
           "confidence": "derived",
           "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "14th or any following day after the first placed trade",
+          "confidence": "sourced",
+          "reasoning": "Reward claim on the 14th or any following day after the first placed trade on the specific account. No fixed recurring calendar cycle published on this FAQ."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "You receive**80%** of the profit (increases to 90% if Scaling Plan or Premium Programme conditions are met).",
+          "confidence": "sourced",
+          "reasoning": "2-Step base 80% (jina fetch; HTML wraps the 80% in tags). 90% is Scaling/Premium, not the default book. 1-Step 90% lives on ftmo-1step."
         }
       },
       "documented_omissions": [
@@ -470,6 +514,22 @@
             "https://ftmo.com/en/trading-objectives/"
           ],
           "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        },
+        {
+          "checked_at": "2026-09-06",
+          "by": "seo3-u22e-payout-provenance",
+          "method": "official-page-fetch-quote-substring",
+          "passes": 1,
+          "outcome": "changed",
+          "fields": {
+            "payout.first_payout_after_days": "changed",
+            "payout.cycle_days": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/"
+          ],
+          "note": "U22e payout provenance 2026-09-06. first_payout_after_days null→14 from FTMO withdraw FAQ. Cycle remains null (no fixed recurring cycle on that FAQ). Split 80% 2-Step base confirmed."
         }
       ]
     },
@@ -545,7 +605,7 @@
         "refund_amount": null
       },
       "payout": {
-        "first_payout_after_days": null,
+        "first_payout_after_days": 14,
         "cycle_days": null,
         "profit_split_pct": 80
       },
@@ -651,6 +711,20 @@
           "quote": "(derived from max_drawdown.basis; see reasoning)",
           "confidence": "derived",
           "reasoning": "E2(a) 2026-07-17: split from includes_unrealized. intraday basis => breach tested continuously; eod/closed basis => tested at close. Independently sourced only where a firm states the test cadence; otherwise derived from basis."
+        },
+        "payout.first_payout_after_days": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "14th or any following day after the first placed trade",
+          "confidence": "sourced",
+          "reasoning": "Reward claim on the 14th or any following day after the first placed trade on the specific account. No fixed recurring calendar cycle published on this FAQ."
+        },
+        "payout.profit_split_pct": {
+          "source_url": "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/",
+          "retrieved_at": "2026-09-06",
+          "quote": "You receive**80%** of the profit (increases to 90% if Scaling Plan or Premium Programme conditions are met).",
+          "confidence": "sourced",
+          "reasoning": "2-Step base 80% (jina fetch; HTML wraps the 80% in tags). 90% is Scaling/Premium, not the default book. 1-Step 90% lives on ftmo-1step."
         }
       },
       "documented_omissions": [
@@ -701,6 +775,22 @@
             "https://ftmo.com/en/trading-objectives/"
           ],
           "note": "Converted a run-2 (2026-07-22) finding into a proper ambiguities[] entry; unified ftmo + ftmo-1step to the same value+set since both cite the identical source sentence."
+        },
+        {
+          "checked_at": "2026-09-06",
+          "by": "seo3-u22e-payout-provenance",
+          "method": "official-page-fetch-quote-substring",
+          "passes": 1,
+          "outcome": "changed",
+          "fields": {
+            "payout.first_payout_after_days": "changed",
+            "payout.cycle_days": "confirmed",
+            "payout.profit_split_pct": "confirmed"
+          },
+          "sources": [
+            "https://ftmo.com/en/faq/how-do-i-withdraw-my-profits/"
+          ],
+          "note": "U22e payout provenance 2026-09-06. first_payout_after_days null→14 from FTMO withdraw FAQ. Cycle remains null (no fixed recurring cycle on that FAQ). Split 80% 2-Step base confirmed."
         }
       ]
     }

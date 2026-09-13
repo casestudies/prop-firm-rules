@@ -1,6 +1,6 @@
 {
-  "firmCount": 59,
-  "anchor": "2026-08-17",
+  "firmCount": 60,
+  "anchor": "2026-09-10",
   "firms": [
     {
       "firm": "Alpha Futures",
@@ -46,8 +46,8 @@
       "firm": "Alpha Futures",
       "slug": "alpha-zero",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -66,8 +66,8 @@
       "firm": "Apex Trader Funding",
       "slug": "apex-eod",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-08-12",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true
@@ -106,8 +106,8 @@
       "firm": "Blue Guardian Futures",
       "slug": "blue-guardian-futures",
       "multiPhase": false,
-      "citedFieldCount": 9,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 10,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -126,8 +126,8 @@
       "firm": "Bulenox",
       "slug": "bulenox",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 11,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -216,8 +216,8 @@
       "firm": "FTMO",
       "slug": "ftmo",
       "multiPhase": true,
-      "citedFieldCount": 14,
-      "lastChecked": "2026-07-31",
+      "citedFieldCount": 16,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true
@@ -226,8 +226,18 @@
       "firm": "FTMO",
       "slug": "ftmo-1step",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-31",
+      "citedFieldCount": 12,
+      "lastChecked": "2026-09-06",
+      "hasGoldenVector": true,
+      "hasDisclosedAmbiguity": true,
+      "hasIndependentRecheck": true
+    },
+    {
+      "firm": "Funded Futures Family",
+      "slug": "funded-futures-family",
+      "multiPhase": false,
+      "citedFieldCount": 14,
+      "lastChecked": "2026-09-10",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true
@@ -236,8 +246,8 @@
       "firm": "Funded Trading Plus",
       "slug": "funded-trading-plus",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -286,8 +296,8 @@
       "firm": "FundedNext Futures",
       "slug": "fundednext-rapid",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": false,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -296,8 +306,8 @@
       "firm": "FundedNext Futures",
       "slug": "fundednext-rapid-daily",
       "multiPhase": false,
-      "citedFieldCount": 10,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 12,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -316,8 +326,8 @@
       "firm": "FundingPips",
       "slug": "funding-pips-pro",
       "multiPhase": true,
-      "citedFieldCount": 12,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 15,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -406,8 +416,8 @@
       "firm": "Maven Trading",
       "slug": "maven-trading",
       "multiPhase": false,
-      "citedFieldCount": 13,
-      "lastChecked": "2026-07-31",
+      "citedFieldCount": 16,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": false,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true
@@ -436,8 +446,8 @@
       "firm": "MyFundedFutures",
       "slug": "myfundedfutures",
       "multiPhase": false,
-      "citedFieldCount": 11,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true
@@ -486,8 +496,8 @@
       "firm": "Phidias",
       "slug": "phidias-fundamental",
       "multiPhase": false,
-      "citedFieldCount": 9,
-      "lastChecked": "2026-07-22",
+      "citedFieldCount": 11,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": false,
       "hasDisclosedAmbiguity": false,
       "hasIndependentRecheck": true
@@ -536,8 +546,8 @@
       "firm": "The5ers",
       "slug": "the5ers",
       "multiPhase": true,
-      "citedFieldCount": 12,
-      "lastChecked": "2026-07-31",
+      "citedFieldCount": 13,
+      "lastChecked": "2026-09-06",
       "hasGoldenVector": true,
       "hasDisclosedAmbiguity": true,
       "hasIndependentRecheck": true

@@ -8,4 +8,4 @@ attribution.
 
 ## Suggested citation
 
-PropSurvival. Prop-firm challenge rule corpus (public dataset showcase) [Dataset]. 59 tracked firms, 5 shown in full detail, 243 account-size configurations in the complete corpus. Retrieved from https://github.com/casestudies/prop-firm-rules
+PropSurvival. Prop-firm challenge rule corpus (public dataset showcase) [Dataset]. 60 tracked firms, 5 shown in full detail, 247 account-size configurations in the complete corpus. Retrieved from https://github.com/casestudies/prop-firm-rules

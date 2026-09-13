@@ -68,7 +68,7 @@ not investment, trading, or legal advice — it publishes no pass rates, ranking
 or comparative claims about any named firm; a firm's rules are facts about a
 published document, not a judgment about the firm.
 
-This snapshot is dated 2026-08-17. The complete, current dataset — every
+This snapshot is dated 2026-09-10. The complete, current dataset — every
 tracked firm, every account size, every cited field — lives inside the free
 simulator at https://propsurvival.com/.
 
